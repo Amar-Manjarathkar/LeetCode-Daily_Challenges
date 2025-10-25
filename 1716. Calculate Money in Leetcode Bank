@@ -1,0 +1,18 @@
+class Solution {
+    public int totalMoney(int n) {
+        int weeks = n / 7;
+        int days = n % 7;
+        
+        // Sum for complete weeks: 7 * [weeks * (weeks-1) / 2 + 4 * weeks]
+        int total = 7 * weeks * (weeks - 1) / 2 + 28 * weeks;
+        
+        // Sum for remaining days: days * (weeks+1 + weeks+days) / 2
+        if (days > 0) {
+            int first = weeks + 1;
+            int last = weeks + days;
+            total += days * (first + last) / 2;
+        }
+        
+        return total;
+    }
+}
